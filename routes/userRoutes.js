@@ -3,10 +3,11 @@ const {
   CreateUser,
   loginUser
 } = require('../Controller/userController')
-const router = Router();
 
-router.post("/signup" , CreateUser);
-router.post("/login", loginUser);
+const userRouter = Router();
+
+userRouter.post("/signup" , CreateUser);
+userRouter.post("/login", loginUser);
 
 
-module.exports = router;
+module.exports = userRouter;

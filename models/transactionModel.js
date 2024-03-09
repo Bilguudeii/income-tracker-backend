@@ -2,7 +2,7 @@ const { mongoose, Schema } = require("mongoose");
 
 const transactionSchema = new Schema({
   userId: { type: String, required: true },
-  catecory: {
+  category: {
     type: String,
     enum: ["food", "shopping", "bills", "clothing"],
   },
@@ -15,3 +15,7 @@ const transactionSchema = new Schema({
     enum: ["income", "expense"],
   },
 });
+
+const transactionModel = mongoose.model("transactions", transactionSchema);
+
+module.exports = transactionModel;
