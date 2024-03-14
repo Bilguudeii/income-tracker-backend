@@ -1,4 +1,4 @@
-const transactionModel = require('../models/transactionModel')
+const transactionModel = require("../models/transactionModel");
 
 const createTransaction = async (req, res) => {
   const data = req.body;
@@ -12,12 +12,12 @@ const createTransaction = async (req, res) => {
 };
 
 const getTransaction = async (req, res) => {
-    try {
-        const response = await transactionModel.find({})
-        res.status(200).send(response)
-    } catch (error) {
-        res.status(500).send(error)
-    }
-}
+  try {
+    const response = await transactionModel.find({});
+    res.status(200).send(response);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
 
 module.exports = { createTransaction, getTransaction };
