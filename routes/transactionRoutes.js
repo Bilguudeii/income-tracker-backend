@@ -1,17 +1,18 @@
-const { Router } = require("express");
+const { Router } = require("express")
 const {
   getTransaction,
   createTransaction,
   deleteTransaction,
   updateTransaction,
-} = require("../Controller/transactionController");
+  getTransactionDetail,
+} = require("../Controller/transactionController")
 
-const transactionRoute = Router();
+const transactionRoute = Router()
 
-transactionRoute.post("/create-transaction", createTransaction);
-transactionRoute.get("/get-transaction", getTransaction);
+transactionRoute.post("/create-transaction", createTransaction)
+transactionRoute.get("/get-transaction", getTransaction)
+transactionRoute.get("/get-transaction/:transactionId", getTransactionDetail)
 transactionRoute.delete("/delete-transaction/:transactionId", deleteTransaction)
-transactionRoute.post("/update-transaction/:transactionId", updateTransaction)
+transactionRoute.put("/update-transaction/:transactionId", updateTransaction)
 
-
-module.exports = transactionRoute;
+module.exports = transactionRoute
