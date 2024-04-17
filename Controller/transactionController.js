@@ -6,7 +6,7 @@ const createTransaction = async (req, res) => {
     const response = await transactionModel.create(data)
     res.status(200).send(`${response._id} Амжилттай боллоо`)
   } catch (error) {
-    res.status(500).send(error)
+    res.send(error)
   }
 }
 
@@ -43,9 +43,19 @@ const updateTransaction = async (req, res) => {
 }
 
 const getTransactionDetail = async (req, res) => {
+  // user id aar avah
   const { transactionId } = req.params
   try {
     const response = await transactionModel.findById(transactionId)
+    res.status(200).send(response)
+  } catch (err) {
+    res.status(500).send(err)
+  }
+}
+const getTransactionByUserId = async (req, res) => {
+  const { userId } = req.params
+  try {
+    const response = await transactionModel.find({ userId: userId })
     res.status(200).send(response)
   } catch (err) {
     res.status(500).send(err)
@@ -58,4 +68,5 @@ module.exports = {
   deleteTransaction,
   updateTransaction,
   getTransactionDetail,
+  getTransactionByUserId,
 }
